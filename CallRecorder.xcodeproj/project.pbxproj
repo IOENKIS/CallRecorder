@@ -8,17 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		181B2E6B2C45294D0048A38E /* CallRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E6A2C45294D0048A38E /* CallRecorderApp.swift */; };
-		181B2E6D2C45294D0048A38E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E6C2C45294D0048A38E /* ContentView.swift */; };
 		181B2E6F2C45294F0048A38E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181B2E6E2C45294F0048A38E /* Assets.xcassets */; };
 		181B2E722C45294F0048A38E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181B2E712C45294F0048A38E /* Preview Assets.xcassets */; };
+		181B2E892C452A0E0048A38E /* TrialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E882C452A0E0048A38E /* TrialButton.swift */; };
+		181B2E8A2C452A0E0048A38E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E872C452A0E0048A38E /* RoundedButton.swift */; };
+		181B2E8E2C452C000048A38E /* HapticTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E8D2C452C000048A38E /* HapticTouchManager.swift */; };
+		181B2E942C452C0C0048A38E /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E8F2C452C0C0048A38E /* OnboardingSlide.swift */; };
+		181B2E952C452C0C0048A38E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E902C452C0C0048A38E /* OnboardingView.swift */; };
+		181B2E962C452C0C0048A38E /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E912C452C0C0048A38E /* PaywallView.swift */; };
+		181B2E972C452C0C0048A38E /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E922C452C0C0048A38E /* SplashView.swift */; };
+		181B2E9A2C455C5D0048A38E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E992C455C5C0048A38E /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		181B2E672C45294D0048A38E /* CallRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181B2E6A2C45294D0048A38E /* CallRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecorderApp.swift; sourceTree = "<group>"; };
-		181B2E6C2C45294D0048A38E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		181B2E6E2C45294F0048A38E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181B2E712C45294F0048A38E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		181B2E872C452A0E0048A38E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		181B2E882C452A0E0048A38E /* TrialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialButton.swift; sourceTree = "<group>"; };
+		181B2E8D2C452C000048A38E /* HapticTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticTouchManager.swift; sourceTree = "<group>"; };
+		181B2E8F2C452C0C0048A38E /* OnboardingSlide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		181B2E902C452C0C0048A38E /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		181B2E912C452C0C0048A38E /* PaywallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		181B2E922C452C0C0048A38E /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		181B2E992C455C5C0048A38E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +65,11 @@
 		181B2E692C45294D0048A38E /* CallRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				181B2E8D2C452C000048A38E /* HapticTouchManager.swift */,
+				181B2E982C455C490048A38E /* MainView */,
+				181B2E862C452A0D0048A38E /* UIElements */,
+				181B2E932C452C0C0048A38E /* Onboarding */,
 				181B2E6A2C45294D0048A38E /* CallRecorderApp.swift */,
-				181B2E6C2C45294D0048A38E /* ContentView.swift */,
 				181B2E6E2C45294F0048A38E /* Assets.xcassets */,
 				181B2E702C45294F0048A38E /* Preview Content */,
 			);
@@ -65,6 +82,34 @@
 				181B2E712C45294F0048A38E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		181B2E862C452A0D0048A38E /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				181B2E872C452A0E0048A38E /* RoundedButton.swift */,
+				181B2E882C452A0E0048A38E /* TrialButton.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		181B2E932C452C0C0048A38E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				181B2E8F2C452C0C0048A38E /* OnboardingSlide.swift */,
+				181B2E902C452C0C0048A38E /* OnboardingView.swift */,
+				181B2E912C452C0C0048A38E /* PaywallView.swift */,
+				181B2E922C452C0C0048A38E /* SplashView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		181B2E982C455C490048A38E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				181B2E992C455C5C0048A38E /* MainView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				181B2E6D2C45294D0048A38E /* ContentView.swift in Sources */,
+				181B2E962C452C0C0048A38E /* PaywallView.swift in Sources */,
+				181B2E8A2C452A0E0048A38E /* RoundedButton.swift in Sources */,
+				181B2E9A2C455C5D0048A38E /* MainView.swift in Sources */,
+				181B2E892C452A0E0048A38E /* TrialButton.swift in Sources */,
 				181B2E6B2C45294D0048A38E /* CallRecorderApp.swift in Sources */,
+				181B2E942C452C0C0048A38E /* OnboardingSlide.swift in Sources */,
+				181B2E8E2C452C000048A38E /* HapticTouchManager.swift in Sources */,
+				181B2E952C452C0C0048A38E /* OnboardingView.swift in Sources */,
+				181B2E972C452C0C0048A38E /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
