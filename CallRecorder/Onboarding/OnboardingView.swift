@@ -10,9 +10,9 @@ import StoreKit
 
 struct OnboardingView: View {
     var slides = [
-        OnboardingSlideModel(image: "onb_1_review", title: "Roku TVs remote\ncontrol", description: "Control your TV\nwithout a remote"),
-        OnboardingSlideModel(image: "onb_2_review", title: "Touch pad for easy and\nintuitive navigation", description: "Easy content viewing\nand TV control"),
-        OnboardingSlideModel(image: "onb_3_review", title: "The most popular\nstreaming channels", description: "Quick access and\ncontrol")
+        OnboardingSlideModel(image: "onb_1_review", title: "Hello,\nCall Recorder!", description: "Record all your calls and make voice\nnotes without any time limit"),
+        OnboardingSlideModel(image: "onb_2_review", title: "Track all calls made\nand received", description: "You'll be able to follow every\nword of your conversation"),
+        OnboardingSlideModel(image: "onb_3_review", title: "All important dialog\nand notes in one place", description: "It's easy to manage, listen to,\nand share them")
     ]
     
     @State private var currentPage = 0

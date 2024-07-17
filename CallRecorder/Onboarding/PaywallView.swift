@@ -57,12 +57,13 @@ struct PaywallView: View {
                 Text((isTrialOn ? "Start to continue App\nwith a 3-day trial and $6.99 per week"
                      : "Start to continue App\njust for $6.99 per week"))
                     .foregroundColor(.white)
+                    .opacity(0.5)
                     .font(.system(size: 18, weight: .bold))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.2)
                     .padding(.horizontal, 10)
-                    .padding(.top, 20)
+//                    .padding(.top, 20)
                     .opacity(UserDefaults.standard.bool(forKey: "darkMode") ? 0.7 : 1)
                 
 //                if UserDefaults.standard.bool(forKey: "testPaywall") {
@@ -103,9 +104,8 @@ struct PaywallView: View {
                             .font(.system(size: 11))
                     }
                 }
-                .padding(.top, 10)
+                .padding(.bottom, 40)
             }
-            .padding(.bottom, UIScreen.main.bounds.height > 850 ? 50 : 120)
         }
         .fullScreenCover(isPresented: $mainView) {
             MainView()

@@ -18,6 +18,16 @@
 		181B2E962C452C0C0048A38E /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E912C452C0C0048A38E /* PaywallView.swift */; };
 		181B2E972C452C0C0048A38E /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E922C452C0C0048A38E /* SplashView.swift */; };
 		181B2E9A2C455C5D0048A38E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E992C455C5C0048A38E /* MainView.swift */; };
+		181B2E9E2C4682580048A38E /* CallRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E9D2C4682580048A38E /* CallRecorderView.swift */; };
+		181B2EA02C4682660048A38E /* VoiceRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2E9F2C4682660048A38E /* VoiceRecorderView.swift */; };
+		181B2EA22C4682740048A38E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2EA12C4682740048A38E /* SettingsView.swift */; };
+		181B2EA62C4692CE0048A38E /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B2EA52C4692CE0048A38E /* AudioRecorder.swift */; };
+		1840D63A2C47EC6800273E43 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D6392C47EC6800273E43 /* AudioPlayer.swift */; };
+		1840D63C2C47ECAF00273E43 /* СallRecorderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D63B2C47ECAF00273E43 /* СallRecorderVM.swift */; };
+		1840D63E2C47ECDB00273E43 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D63D2C47ECDB00273E43 /* RecordModel.swift */; };
+		1840D6402C47EE6500273E43 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D63F2C47EE6500273E43 /* Ext.swift */; };
+		1840D6422C47F2C300273E43 /* MyRecordingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D6412C47F2C300273E43 /* MyRecordingsView.swift */; };
+		1840D6442C47F3E300273E43 /* RecordingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D6432C47F3E300273E43 /* RecordingRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +43,16 @@
 		181B2E912C452C0C0048A38E /* PaywallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		181B2E922C452C0C0048A38E /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		181B2E992C455C5C0048A38E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		181B2E9D2C4682580048A38E /* CallRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecorderView.swift; sourceTree = "<group>"; };
+		181B2E9F2C4682660048A38E /* VoiceRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderView.swift; sourceTree = "<group>"; };
+		181B2EA12C4682740048A38E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		181B2EA52C4692CE0048A38E /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		1840D6392C47EC6800273E43 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		1840D63B2C47ECAF00273E43 /* СallRecorderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СallRecorderVM.swift"; sourceTree = "<group>"; };
+		1840D63D2C47ECDB00273E43 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		1840D63F2C47EE6500273E43 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
+		1840D6412C47F2C300273E43 /* MyRecordingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordingsView.swift; sourceTree = "<group>"; };
+		1840D6432C47F3E300273E43 /* RecordingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +85,11 @@
 		181B2E692C45294D0048A38E /* CallRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				181B2E8D2C452C000048A38E /* HapticTouchManager.swift */,
 				181B2E982C455C490048A38E /* MainView */,
 				181B2E862C452A0D0048A38E /* UIElements */,
 				181B2E932C452C0C0048A38E /* Onboarding */,
 				181B2E6A2C45294D0048A38E /* CallRecorderApp.swift */,
+				1840D63F2C47EE6500273E43 /* Ext.swift */,
 				181B2E6E2C45294F0048A38E /* Assets.xcassets */,
 				181B2E702C45294F0048A38E /* Preview Content */,
 			);
@@ -100,6 +120,7 @@
 				181B2E902C452C0C0048A38E /* OnboardingView.swift */,
 				181B2E912C452C0C0048A38E /* PaywallView.swift */,
 				181B2E922C452C0C0048A38E /* SplashView.swift */,
+				181B2EA72C4692DE0048A38E /* Model */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -108,8 +129,33 @@
 			isa = PBXGroup;
 			children = (
 				181B2E992C455C5C0048A38E /* MainView.swift */,
+				181B2E9D2C4682580048A38E /* CallRecorderView.swift */,
+				181B2E9F2C4682660048A38E /* VoiceRecorderView.swift */,
+				181B2EA12C4682740048A38E /* SettingsView.swift */,
+				1840D6452C47F3F800273E43 /* MyRecordings */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		181B2EA72C4692DE0048A38E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				181B2E8D2C452C000048A38E /* HapticTouchManager.swift */,
+				181B2EA52C4692CE0048A38E /* AudioRecorder.swift */,
+				1840D6392C47EC6800273E43 /* AudioPlayer.swift */,
+				1840D63B2C47ECAF00273E43 /* СallRecorderVM.swift */,
+				1840D63D2C47ECDB00273E43 /* RecordModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1840D6452C47F3F800273E43 /* MyRecordings */ = {
+			isa = PBXGroup;
+			children = (
+				1840D6412C47F2C300273E43 /* MyRecordingsView.swift */,
+				1840D6432C47F3E300273E43 /* RecordingRowView.swift */,
+			);
+			path = MyRecordings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,15 +228,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181B2E9E2C4682580048A38E /* CallRecorderView.swift in Sources */,
 				181B2E962C452C0C0048A38E /* PaywallView.swift in Sources */,
 				181B2E8A2C452A0E0048A38E /* RoundedButton.swift in Sources */,
 				181B2E9A2C455C5D0048A38E /* MainView.swift in Sources */,
 				181B2E892C452A0E0048A38E /* TrialButton.swift in Sources */,
+				1840D6442C47F3E300273E43 /* RecordingRowView.swift in Sources */,
 				181B2E6B2C45294D0048A38E /* CallRecorderApp.swift in Sources */,
 				181B2E942C452C0C0048A38E /* OnboardingSlide.swift in Sources */,
+				181B2EA02C4682660048A38E /* VoiceRecorderView.swift in Sources */,
+				181B2EA62C4692CE0048A38E /* AudioRecorder.swift in Sources */,
 				181B2E8E2C452C000048A38E /* HapticTouchManager.swift in Sources */,
+				1840D6402C47EE6500273E43 /* Ext.swift in Sources */,
+				181B2EA22C4682740048A38E /* SettingsView.swift in Sources */,
 				181B2E952C452C0C0048A38E /* OnboardingView.swift in Sources */,
+				1840D63E2C47ECDB00273E43 /* RecordModel.swift in Sources */,
+				1840D6422C47F2C300273E43 /* MyRecordingsView.swift in Sources */,
 				181B2E972C452C0C0048A38E /* SplashView.swift in Sources */,
+				1840D63A2C47EC6800273E43 /* AudioPlayer.swift in Sources */,
+				1840D63C2C47ECAF00273E43 /* СallRecorderVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +388,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,6 +418,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

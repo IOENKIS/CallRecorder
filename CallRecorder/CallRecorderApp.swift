@@ -7,7 +7,7 @@
 import SwiftUI
 
 @main
-struct TVRemoteForRokuApp: App {
+struct CallRecorderApp: App {
     @State private var dismissSplash = false
     @Environment(\.scenePhase) var scenePhase
     @State private var purchased: String?

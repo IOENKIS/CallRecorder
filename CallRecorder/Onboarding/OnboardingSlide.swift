@@ -23,7 +23,7 @@ struct OnboardingSlide: View {
                 Spacer()
                 
                 Text(slide.title)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .font(.system(size: 34, weight: .bold))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -32,7 +32,7 @@ struct OnboardingSlide: View {
                     .padding(.bottom, 20)
                 
                 Text(slide.description)
-                    .foregroundColor(.white)
+                    .foregroundColor(.secondary)
                     .font(.system(size: 18, weight: .bold))
                     .multilineTextAlignment(.center)
                     .lineLimit(slide.description.count > 67 ? 3 : 2)
@@ -44,7 +44,6 @@ struct OnboardingSlide: View {
                 RoundedButton(perform: action, text: "Continue", showImage: true, animate: true)
                     .padding(.bottom, 40)
             }
-            .padding(.bottom, UIScreen.main.bounds.height > 850 ? 40 : 100)
         }
     }
 }

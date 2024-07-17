@@ -20,23 +20,21 @@ struct RoundedButton: View {
             perform()
         }) {
             ZStack {
-                Image("backgroundButton")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.width - 15, height: 60)
-                    .presentationCornerRadius(40)
-                VStack{
                 RoundedRectangle(cornerRadius: 40)
+                    .fill(Color.clear)
                     .frame(width: UIScreen.main.bounds.width - 15, height: 60)
-                    .opacity(1)
-            }
-
+                    .background(
+                        Image("backgroundButton")
+                            .resizable()
+                            .scaledToFill()
+                    )
+                
                 Text(text)
                     .foregroundColor(.white)
                     .font(.system(size: 16, weight: .bold))
                 
                 if showImage {
                     HStack {
-                        Spacer()
                         Spacer()
                         Image("buttonImage")
                             .resizable()
@@ -46,6 +44,7 @@ struct RoundedButton: View {
                     }
                 }
             }
+            .padding(.bottom, 40)
         }
         .scaleEffect(isAnimating ? 0.88 : 1)
         .onAppear {
