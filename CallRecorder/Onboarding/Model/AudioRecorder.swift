@@ -1,10 +1,3 @@
-//
-//  AudioRecorder.swift
-//  CallRecorder
-//
-//  Created by IVANKIS on 16.07.2024.
-//
-
 import SwiftUI
 import Combine
 import AVFoundation
@@ -22,7 +15,8 @@ class AudioRecorder: NSObject, ObservableObject {
     
     var audioRecorder: AVAudioRecorder!
     
-    var recordings = [Recording]()
+    @Published var callRecordings = [Recording]()
+    @Published var voiceRecordings = [Recording]()
     
     var recording = false {
         didSet {
@@ -30,9 +24,7 @@ class AudioRecorder: NSObject, ObservableObject {
         }
     }
     
-    var groupedRecordings: [Date: [Recording]]  = [:]
-    
-    func startRecording() {
+    func startRecording(isCallRecording: Bool) {
         let recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -43,7 +35,7 @@ class AudioRecorder: NSObject, ObservableObject {
         }
         
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+        let audioFilename = documentPath.appendingPathComponent("\(isCallRecording ? "call_" : "voice_")\(Date().toString(dateFormat: "yyyy-MM-dd_HH-mm-ss")).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -62,47 +54,56 @@ class AudioRecorder: NSObject, ObservableObject {
         }
     }
     
-    func stopRecording() {
+    func stopRecording(isCallRecording: Bool) {
         audioRecorder.stop()
         recording = false
         
-        fetchRecording()
-        print("done")
+        let newRecording = Recording(fileURL: audioRecorder.url, createdAt: Date(), duration: getAudioDuration(for: audioRecorder.url), isCallRecording: isCallRecording)
+        
+        if isCallRecording {
+            callRecordings.append(newRecording)
+        } else {
+            voiceRecordings.append(newRecording)
+        }
+        
+        objectWillChange.send(self)
     }
     
     func fetchRecording() {
-        recordings.removeAll()
+        callRecordings.removeAll()
+        voiceRecordings.removeAll()
         
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
         for audio in directoryContents {
             let duration = getAudioDuration(for: audio)
-                       let recording = Recording(fileURL: audio, createdAt: getFileDate(for: audio), duration: duration)
-                       recordings.append(recording)
+            let isCallRecording = audio.lastPathComponent.hasPrefix("call_")
+            let recording = Recording(fileURL: audio, createdAt: getFileDate(for: audio), duration: duration, isCallRecording: isCallRecording)
+            if recording.isCallRecording {
+                callRecordings.append(recording)
+            } else {
+                voiceRecordings.append(recording)
+            }
         }
         
-        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedDescending})
+        callRecordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedDescending })
+        voiceRecordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedDescending })
         
         objectWillChange.send(self)
-        
-        groupedRecordings = Dictionary(grouping: recordings) { (recording) -> Date in
-            let components = Calendar.current.dateComponents([.year, .month, .day], from: recording.createdAt)
-            return Calendar.current.date(from: components)!
-        }
     }
     
     func deleteRecording(urlToDelete: URL) {
-            
-            do {
-               try FileManager.default.removeItem(at: urlToDelete)
-            } catch {
-                print("File could not be deleted!")
-            }
+        do {
+            try FileManager.default.removeItem(at: urlToDelete)
+        } catch {
+            print("File could not be deleted!")
+        }
+        callRecordings.removeAll { $0.fileURL == urlToDelete }
+        voiceRecordings.removeAll { $0.fileURL == urlToDelete }
         fetchRecording()
     }
 }
-
 
 func getFileDate(for file: URL) -> Date {
     if let attributes = try? FileManager.default.attributesOfItem(atPath: file.path) as [FileAttributeKey: Any],

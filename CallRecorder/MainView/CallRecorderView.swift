@@ -9,11 +9,14 @@ import SwiftUI
 
 struct CallRecorderView: View {
     @StateObject private var callRecorderVM = CallRecorderVM()
+    @State private var showRecordings = false
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
+                Image("recordingWaves")
                 VStack {
                     Spacer()
                     
@@ -24,18 +27,18 @@ struct CallRecorderView: View {
                     Spacer()
 
                     Button(action: {
-                        callRecorderVM.recordButton()
+                        callRecorderVM.recordButton(isCallRecording: true)
                     }) {
-                        Image(callRecorderVM.isRecording ? "stop" : "callRecorder")
+                        Image("callRecorder")
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 200, height: 200)
                     }
                     
                     Spacer()
                     
-                    Button {
-                        // Дія кнопки "My recordings"
-                    } label: {
+                    Button(action: {
+                        showRecordings = true
+                    }) {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
                             .frame(width: 220, height: 60)
@@ -46,16 +49,24 @@ struct CallRecorderView: View {
                             }
                     }
                     .padding(.bottom, 40)
+                    .fullScreenCover(isPresented: $showRecordings) {
+                        MyRecordingsView()
+                            .environmentObject(callRecorderVM)
+                    }
                 }
             }
-            .navigationTitle("Call Recorder")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Call Recorder")
+                        .foregroundColor(.white)
+                        .font(.system(size: 24, weight: .bold))
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        // Дія кнопки
+                        showPaywall = true
                     }) {
-                        Image(systemName: "premiumButton")
+                        Image("premiumButton")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.white)
@@ -75,6 +86,9 @@ struct CallRecorderView: View {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().tintColor = .white
         }
+        .fullScreenCover(isPresented: $showPaywall, content: {
+            PaywallView(initialOpen: false)
+        })
     }
 }
 

@@ -10,11 +10,14 @@ import AVFoundation
 
 struct VoiceRecorderView: View {
     @StateObject private var callRecorderVM = CallRecorderVM()
+    @State private var showRecordings = false
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
+                Image("recordingWaves")
                 VStack {
                     Spacer()
 
@@ -31,26 +34,18 @@ struct VoiceRecorderView: View {
                     Spacer()
 
                     Button(action: {
-                        // Дія кнопки, якщо потрібно
+                        callRecorderVM.recordButton(isCallRecording: false)
                     }) {
                         Image("voiceRecorder")
                             .resizable()
-                            .frame(width: 100, height: 100)
-                            .gesture(
-                                LongPressGesture(minimumDuration: 0.1)
-                                    .onChanged { _ in
-                                        callRecorderVM.startRecording()
-                                    }
-                                    .onEnded { _ in
-                                        callRecorderVM.stopRecording()
-                                    }
-                            )
+                            .frame(width: 200, height: 200)
                     }
                     
                     Spacer()
                     
+                    
                     Button {
-                        // Дія кнопки "My recordings"
+                        showRecordings = true
                     } label: {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
@@ -62,6 +57,10 @@ struct VoiceRecorderView: View {
                             }
                     }
                     .padding(.bottom, 40)
+                    .fullScreenCover(isPresented: $showRecordings) {
+                        MyRecordingsView()
+                            .environmentObject(callRecorderVM)
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -73,9 +72,9 @@ struct VoiceRecorderView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        // Дія кнопки
+                        showPaywall = true
                     }) {
-                        Image(systemName: "premiumButton")
+                        Image("premiumButton")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.white)
@@ -95,6 +94,9 @@ struct VoiceRecorderView: View {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().tintColor = .white
         }
+        .fullScreenCover(isPresented: $showPaywall, content: {
+            PaywallView(initialOpen: false)
+        })
     }
 }
 

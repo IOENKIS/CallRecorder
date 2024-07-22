@@ -1,45 +1,42 @@
-import Foundation
 import SwiftUI
 import Combine
 import AVFoundation
 
-final class CallRecorderViewModel: ObservableObject {
+final class CallRecorderVM: ObservableObject {
     
     @Published var isRecording = false
     @Published var counter = "00:00:00"
     @Published var progress: CGFloat = 0.0
-    @Published var allRecords: [Date : [Recording]] = [:]
     var synthVM = SynthViewModel()
     
-     var audioRecorder = AudioRecorder.shared
-     var audioPlayer = AudioPlayer.shared
+    var audioRecorder = AudioRecorder.shared
+    var audioPlayer = AudioPlayer.shared
     
     private var timer: Timer?
     private var startTime: Date?
     private var recordingDuration: TimeInterval = 60.0  // Example: 60 seconds max duration
 
-    func recordButton() {
+    func recordButton(isCallRecording: Bool) {
         if isRecording {
             self.synthVM.speak(text: "Recording Stopped")
-            stopRecording()
+            stopRecording(isCallRecording: isCallRecording)
         } else {
             self.synthVM.speak(text: "Recording Started")
-            startRecording()
+            startRecording(isCallRecording: isCallRecording)
         }
     }
     
-    private func startRecording() {
+    func startRecording(isCallRecording: Bool) {
         isRecording = true
-        audioRecorder.startRecording()
+        audioRecorder.startRecording(isCallRecording: isCallRecording)
         startTime = Date()
         startTimer()
     }
     
-    private func stopRecording() {
+    func stopRecording(isCallRecording: Bool) {
         isRecording = false
-        audioRecorder.stopRecording()
+        audioRecorder.stopRecording(isCallRecording: isCallRecording)
         stopTimer()
-        allRecords = audioRecorder.groupedRecordings
     }
     
     private func startTimer() {
@@ -66,52 +63,36 @@ final class CallRecorderViewModel: ObservableObject {
     }
 
     func delete(url: URL) {
-        // Delete the recording from the file system
         audioRecorder.deleteRecording(urlToDelete: url)
-        
-        // Update the allRecords dictionary to remove the deleted recording
-        for (key, recordings) in allRecords {
-            if let index = recordings.firstIndex(where: { $0.fileURL == url }) {
-                allRecords[key]?.remove(at: index)
-                if allRecords[key]?.isEmpty == true {
-                    allRecords.removeValue(forKey: key)
-                }
-                break
-            }
-        }
-        
-        // Refresh recordings from the audioRecorder
-        audioRecorder.fetchRecording()
-        allRecords = audioRecorder.groupedRecordings
     }
 }
 
 class SynthViewModel: NSObject {
-  private var speechSynthesizer = AVSpeechSynthesizer()
-  
-  override init() {
-    super.init()
-    self.speechSynthesizer.delegate = self
-  }
-  
-  func speak(text: String) {
-    let utterance = AVSpeechUtterance(string: text)
-    utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-    speechSynthesizer.speak(utterance)
-  }
+    private var speechSynthesizer = AVSpeechSynthesizer()
+    
+    override init() {
+        super.init()
+        self.speechSynthesizer.delegate = self
+    }
+    
+    func speak(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechSynthesizer.speak(utterance)
+    }
 }
 
 extension SynthViewModel: AVSpeechSynthesizerDelegate {
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-    print("started")
-  }
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
-    print("paused")
-  }
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {}
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {}
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {}
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-    print("finished")
-  }
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        print("started")
+    }
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
+        print("paused")
+    }
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {}
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {}
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {}
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("finished")
+    }
 }
